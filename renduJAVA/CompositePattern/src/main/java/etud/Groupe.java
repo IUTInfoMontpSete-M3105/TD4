@@ -2,27 +2,18 @@ package etud;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 /** Représente un groupe d'entités */
-public class Groupe  {
-	
-	
-	/** Le nom de l'entité */
-	private String nom;
-	/** La couleur de l'entité */
-	private String couleur;
-	/** La forme de l'entité */
-	private Node maForme;
-	
-	
+public class Groupe {
+
 	/** Les membres du groupe */
-	private HashSet<Entite> contenu = new HashSet<>();
+	private Set<Entite> contenu = new HashSet<>();
 
 	/** Stockage de convénience pour le groupe */
 	private Group monGroupe = new Group();
@@ -40,6 +31,7 @@ public class Groupe  {
 	 * @param couleur sa couleur
 	 */
 	public Groupe(String nom, String couleur) {
+		super(nom, couleur);
 		setMaForme(monGroupe);
 		mesCouleurs = new Color[1];
 		mesCouleurs[0] = Color.valueOf(getCouleur());
@@ -47,30 +39,9 @@ public class Groupe  {
 		getMaForme().addEventFilter(MouseEvent.MOUSE_CLICKED, this::mouseClicked);
 	}
 
-	
-	/** Retourne la couleur de l'entité */
-	public String getCouleur() {
-		return couleur;
-	}
-
-	/** Retourne le nom de l'entité */
-	public String getNom() {
-		return nom;
-	}
-
-	/** Change la forme de l'entité */
-	public void setMaForme(Node maForme) {
-		this.maForme = maForme;
-		maForme.setUserData(this); // Permet de retrouver le modèle associé à la vue
-	}
-
-	/** Retourne la forme de l'entité */
-	public Node getMaForme() {
-		return maForme;
-	}
 	/**
 	 * Ajoute une entité au groupe.
-	 * 
+	 *
 	 * @param p l'entité à ajouter.
 	 */
 	public void ajouter(Entite p) {
@@ -90,27 +61,12 @@ public class Groupe  {
 		p.restaureBordure();
 	}
 
-	
-	public void couleurNormal() {
-//TODO
-	}
-
-	public void couleurSelection() {
-//TODO
-	}
-
-	
 	public void setOnMouseClicked(EventHandler<? super MouseEvent> mouseClicked) {
 		for (Entite child : contenu)
 			child.setOnMouseClicked(mouseClicked);
 		handler = mouseClicked;
 	}
 
-	public void deplacer() {
-//TODO
-	}
-
-	
 	public void setBordure(Color... couleurs) {
 		mesCouleurs = Arrays.copyOf(couleurs, couleurs.length + 1);
 		mesCouleurs[couleurs.length] = Color.valueOf(getCouleur());
@@ -118,7 +74,6 @@ public class Groupe  {
 			child.setBordure(mesCouleurs);
 	}
 
-	
 	public void restaureBordure() {
 		mesCouleurs = new Color[1];
 		mesCouleurs[0] = Color.valueOf(getCouleur());
@@ -130,5 +85,17 @@ public class Groupe  {
 	public void mouseClicked(MouseEvent mouseEvent) {
 		handler.handle(mouseEvent);
 		mouseEvent.consume();
+	}
+
+	public void deplacer() {
+		//TODO
+	}
+
+	public void couleurNormal() {
+		//TODO
+	}
+
+	public void couleurSelection() {
+		//TODO
 	}
 }

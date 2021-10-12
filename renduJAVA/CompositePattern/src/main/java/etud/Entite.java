@@ -92,15 +92,6 @@ public abstract class Entite {
 	 * @see Node#setOnMouseClicked(EventHandler)
 	 */
 	public void setOnMouseClicked(EventHandler<? super MouseEvent> mouseClicked) {
-		// Rappel : JavaFX applique d'abord les filtres du noeud principal vers les
-		// feuilles
-		// puis les handlers en remontant vers le noeud principal
-		// s'arrête dès que l'événement est consommé.
-		/*
-		 * // applique aux enfants d'abord maForme.setOnMouseClicked(mouseClicked); //
-		 * applique aux parents d'abord maForme.addEventFilter(MouseEvent.MOUSE_CLICKED,
-		 * mouseClicked);
-		 */
 		maForme.setOnMouseClicked(mouseClicked);
 	}
 

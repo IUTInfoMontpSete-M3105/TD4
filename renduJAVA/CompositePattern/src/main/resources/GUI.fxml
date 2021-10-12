@@ -4,17 +4,16 @@
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ens.Simulateur"
+            fx:controller="etud.Simulateur"
             prefHeight="400.0" prefWidth="600.0">
     <top>
     <MenuBar style="-fx-background-color: lightgray;">
         <Menu text="_Sélection">
-            <MenuItem text="_Créer Groupe" onAction="#creerGroupes"/>
             <MenuItem text="_Déplacer" onAction="#deplacer"/>
         </Menu>
         <Menu text="_Créer">
             <MenuItem text="_Groupe" onAction="#creerGroupes"/>
-            <MenuItem text="_Personne" onAction="#creerPersonnne"/>
+            <MenuItem text="_Personne" onAction="#creerPersonne"/>
         </Menu>
         <Menu text="_?">
             <MenuItem text="_A Propos" onAction="#aPropos"/>

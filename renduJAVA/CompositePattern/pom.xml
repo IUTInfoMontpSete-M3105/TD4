@@ -5,10 +5,10 @@
 <modelVersion>4.0.0</modelVersion>
 
 <groupId>fr.univ_montpellier.iut</groupId>
-<artifactId>td6</artifactId>
+<artifactId>td4</artifactId>
 <packaging>jar</packaging>
 <version>1.0-SNAPSHOT</version>
-<name>td6</name>
+<name>td4</name>
 <url>http://maven.apache.org</url>
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -127,7 +127,7 @@
                 </execution>
             </executions>
             <configuration>
-                <mainClass>composite.SimulateurDeMouvements</mainClass>
+                <mainClass>etud.App</mainClass>
             </configuration>
         </plugin>
 

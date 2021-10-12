@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 /** Le contrôleur de l'application */
 public class Simulateur implements Initializable {
@@ -27,7 +28,7 @@ public class Simulateur implements Initializable {
 	Pane contenu;
 
 	/** L'ensemble des entités sélectionnées */
-	private HashSet<Entite> selection = new HashSet<>();
+	private Set<Entite> selection = new HashSet<>();
 
 	/** Une liste de couleurs */
 	public static final String[] COLS = new String[] { "black", "brown", "red", "orange", "yellow", "green", "blue",
@@ -40,12 +41,17 @@ public class Simulateur implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		for (int i = 0; i < 10; i++) {
-			creePersonne();
+			creerPersonne();
 		}
 	}
 
-	/** Crée une personne aléatoire et l'ajoute à la foule */
-	public void creePersonne() {
+	/**
+	 * Gère l'action du menu créer une personne.
+	 * Crée une personne aléatoire et l'ajoute à la foule.
+	 *
+	 * @see MenuItem#getOnAction()
+	 */
+	public void creerPersonne() {
 		double x = hasard.nextDouble() * 780 + 10;
 		double y = hasard.nextDouble() * 550 + 10;
 		++nbElements;
@@ -62,13 +68,13 @@ public class Simulateur implements Initializable {
 	public void mouseClicked(MouseEvent mouseEvent) {
 		Node source = (Node) mouseEvent.getSource();
 
-		Entite personne = (Entite) source.getUserData();
-		if (selection.contains(personne)) {
-			selection.remove(personne);
-			personne.couleurNormal();
+		Entite element = (Entite) source.getUserData();
+		if (selection.contains(element)) {
+			selection.remove(element);
+			element.couleurNormal();
 		} else {
-			selection.add(personne);
-			personne.couleurSelection();
+			selection.add(element);
+			element.couleurSelection();
 		}
 		mouseEvent.consume();
 	}
@@ -88,25 +94,6 @@ public class Simulateur implements Initializable {
 			p.couleurNormal(); // retire la sélection
 		}
 		selection.clear();
-//    grp.getMaForme().toBack();
-	}
-
-	/**
-	 * Gère l'action du menu déplace la sélection.
-	 * 
-	 * @see MenuItem#getOnAction()
-	 */
-	public void deplacer(ActionEvent event) {
-		}
-	}
-
-	/**
-	 * Gère l'action du menu créer une personne.
-	 * 
-	 * @see MenuItem#getOnAction()
-	 */
-	public void creerPersonnne(ActionEvent event) {
-		creePersonne();
 	}
 
 	/**
@@ -131,4 +118,14 @@ public class Simulateur implements Initializable {
 		a.getButtonTypes().setAll(ButtonType.CLOSE);
 		a.showAndWait();
 	}
+
+	/**
+	 * Gère l'action du menu déplace la sélection.
+	 *
+	 * @see MenuItem#getOnAction()
+	 */
+	public void deplacer(ActionEvent event) {
+		// TODO
+	}
+
 }
